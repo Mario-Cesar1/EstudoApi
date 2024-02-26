@@ -54,12 +54,12 @@ namespace APIAlmoxarigado.Controllers
 
         [HttpPost]
         [Route("AddProdutosemFoto")]
-        public IActionResult AdicionarProdutoSemFoto(ProdutoViewModelSemFoto produto)
+        public IActionResult AdicionarProdutoSemFoto([FromForm]ProdutoViewModelSemFoto produto)
         {
             try
             {
                             _produtoRepository.Add(
-                new Produto() { nome=produto.nome, estoque= produto.estoque, photourl=null }
+                new Produto() { nome=produto.nome, estoque= produto.estoque, photourl=null, codigoCategoria = Convert.ToInt32(produto.codigoCategoria) }
                 );
 
                 return Ok("Cadastrado com Sucesso");
@@ -82,7 +82,7 @@ namespace APIAlmoxarigado.Controllers
                 produto.photo.CopyTo(fileStream);
 
                 _produtoRepository.Add(
-                new Produto() { nome = produto.nome, estoque = produto.estoque, photourl = caminho }
+                new Produto() { nome = produto.nome, estoque = produto.estoque, photourl = caminho, codigoCategoria = Convert.ToInt32(produto.codigoCategoria) }
     );
 
                 return Ok("Cadastrado com Sucesso");
