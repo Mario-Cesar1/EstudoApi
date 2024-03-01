@@ -95,8 +95,8 @@ namespace APIAlmoxarigado.Controllers
         }
 
         [HttpGet]
-        [Route("{id}/GetProduto")]
-        public IActionResult GetAll(int id)
+        [Route("{id}/GetProdutoByID")]
+        public IActionResult GetProdutoByID(int id)
         {
             return Ok(_produtoRepository.GetAll().Find(x=>x.id==id));
         }
@@ -120,5 +120,31 @@ namespace APIAlmoxarigado.Controllers
                 return BadRequest("Erro ao fazer download: " + ex.Message);
             }
         }
+
+        [HttpDelete]
+        [Route("{idProduto}/RemoveProduto")]
+        public IActionResult RemoveProduto(int idProduto)
+        {
+            try
+            {
+                var categoriaEncontrada = _produtoRepository.GetAll().Find(x => x.id == idProduto);
+                if (categoriaEncontrada is not null)
+                {
+                    _produtoRepository.Delete(
+                        new Produto() { id = idProduto }
+                        );
+
+                    return Ok("Produto Removido com sucesso");
+                }
+                return BadRequest("Produto não existe");
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Erro ao remover produto: " + ex);
+            }
+        }
     }
 }
+

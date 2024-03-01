@@ -6,6 +6,8 @@ namespace APIAlmoxarigado.Repository
     {
         List<Produto> GetAll();
 
+        void Delete(Produto idProduto);
+
         void Add(Produto produto);
     }
 }

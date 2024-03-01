@@ -63,12 +63,12 @@ namespace APIAlmoxarigado.Controllers
         }
 
         [HttpDelete]
-        [Route("RemoveCategoria")]
-        public IActionResult RemoveCategoria([FromForm] CategoriaDeleteViewModel idCategoria)
+        [Route("{idCategoria}/RemoveCategoria")]
+        public IActionResult RemoveCategoria(int idCategoria)
         {
             try
             {
-                var categoriaEncontrada = _categoriaRepository.GetAll().Find(x => x.id == Convert.ToInt32(idCategoria));
+                var categoriaEncontrada = _categoriaRepository.GetAll().Find(x => x.id == idCategoria);
                 if (categoriaEncontrada is not null)
                 {
                     _categoriaRepository.Delete(

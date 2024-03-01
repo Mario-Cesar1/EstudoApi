@@ -13,6 +13,12 @@ namespace APIAlmoxarigado.Repository
             bdConexao.SaveChanges();
         }
 
+        public void Delete(Produto idProduto)
+        {
+            bdConexao.Produto.Remove(idProduto);
+            bdConexao.SaveChanges();
+        }
+
         public List<Produto> GetAll()
         {
 

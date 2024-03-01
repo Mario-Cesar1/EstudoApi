@@ -61,5 +61,31 @@ namespace APIAlmoxarigado.Controllers
                 return BadRequest("Não Cadastrado. Erro: " + ex.Message);
             }
         }
+
+        [HttpDelete]
+        [Route("{idDepartamento}/RemoveDepartamento")]
+        public IActionResult RemoveDepartamento(int idDepartamento)
+        {
+            try
+            {
+                var departamentoEncontrodo = _departamentoRepository.GetAll().Find(x => x.id == idDepartamento);
+                if (departamentoEncontrodo is not null)
+                {
+                    _departamentoRepository.Delete(
+                        new Departamento() { id = idDepartamento }
+                        );
+
+                    return Ok("Departamendo Removido com sucesso");
+                }
+                return BadRequest("Departamendo não existe");
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Erro ao remover departamendo: " + ex);
+            }
+        }
     }
 }
+

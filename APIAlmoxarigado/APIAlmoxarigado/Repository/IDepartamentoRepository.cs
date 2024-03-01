@@ -7,5 +7,7 @@ namespace APIAlmoxarigado.Repository
         List<Departamento> GetAll();
 
         void Add(Departamento departamento);
+
+        void Delete(Departamento idDepartamento);
     }
 }

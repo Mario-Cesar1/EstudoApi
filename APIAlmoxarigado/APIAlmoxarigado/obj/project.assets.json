@@ -2433,19 +2433,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\manha.cetafest\\.nuget\\packages\\": {}
+    "C:\\Users\\mc735\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\manha.cetafest\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj",
+      "projectUniqueName": "C:\\Users\\mc735\\OneDrive\\Documentos\\Github\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj",
       "projectName": "APIAlmoxarigado",
-      "projectPath": "C:\\Users\\manha.cetafest\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj",
-      "packagesPath": "C:\\Users\\manha.cetafest\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\manha.cetafest\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\obj\\",
+      "projectPath": "C:\\Users\\mc735\\OneDrive\\Documentos\\Github\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj",
+      "packagesPath": "C:\\Users\\mc735\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\mc735\\OneDrive\\Documentos\\Github\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\manha.cetafest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\mc735\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2505,7 +2510,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }
