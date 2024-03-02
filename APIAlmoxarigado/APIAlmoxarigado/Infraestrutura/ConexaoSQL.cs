@@ -19,5 +19,6 @@ namespace APIAlmoxarigado.Infraestrutura
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Departamento> Departamento { get; set; }
+        public DbSet<Funcionario> Funcionario { get; set; }
     }
 }

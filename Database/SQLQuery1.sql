@@ -24,6 +24,18 @@ create table Departamento
 	situacao bit null
 )
 go
+create table Funcionario
+(
+	id int identity(1,1) primary key,
+	nome varchar(100) not null,
+	cargo varchar(100) not null,
+	DataNascimento date not null,
+	salario float not null,
+	endereco varchar(200),
+	cidade varchar(100),
+	UF varchar(2)
+)
+go
 alter table Produto add codigoCategoria int FOREIGN KEY REFERENCES Categoria(id)  
 go
 go
@@ -44,6 +56,11 @@ Insert Departamento (descricao, situacao) values ('Administrativo', 1)
 go
 Insert Departamento (descricao, situacao) values ('Segurança', 0)
 go
+Insert Funcionario(nome, cargo, DataNascimento, salario, endereco, cidade, UF) values ('Pedro', 'Garoto de Programa', '01/02/2000', 2000.96, 'Rua da gota serena, 200', 'Cidade da gota', 'GT')
+Insert Funcionario(nome, cargo, DataNascimento, salario, endereco, cidade, UF) values ('Cleiton', 'Administrador Financeiro', '05/10/2000', 2000.96, 'Rua da gota serena, 210', 'Cidade da gota', 'GT')
+Insert Funcionario(nome, cargo, DataNascimento, salario, endereco, cidade, UF) values ('Mário', 'Gerente', '09/11/2000', 2000.96, 'Rua da gota serena, 220', 'Cidade da gota', 'GT')
+go
+select * from Funcionario
 Select * from Produto
 Select * from Categoria
 select * from Departamento

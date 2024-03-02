@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\manha.cetafest\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj": {}
+    "C:\\Users\\fusion\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj": {}
   },
   "projects": {
-    "C:\\Users\\manha.cetafest\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj": {
+    "C:\\Users\\fusion\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\manha.cetafest\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj",
+        "projectUniqueName": "C:\\Users\\fusion\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj",
         "projectName": "APIAlmoxarigado",
-        "projectPath": "C:\\Users\\manha.cetafest\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj",
-        "packagesPath": "C:\\Users\\manha.cetafest\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\manha.cetafest\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\obj\\",
+        "projectPath": "C:\\Users\\fusion\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\APIAlmoxarigado.csproj",
+        "packagesPath": "C:\\Users\\fusion\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\fusion\\Documents\\GitHub\\EstudoApi\\APIAlmoxarigado\\APIAlmoxarigado\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\manha.cetafest\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\fusion\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
