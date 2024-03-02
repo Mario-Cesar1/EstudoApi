@@ -22,5 +22,10 @@ namespace APIAlmoxarigado.Repository
         {
             return bdConexao.Departamento.ToList();
         }
+
+        public async Task<Departamento?> GetById(int id)
+        {
+            return await bdConexao.Set<Departamento>().FindAsync(id);
+        }
     }
 }

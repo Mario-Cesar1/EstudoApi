@@ -9,5 +9,7 @@ namespace APIAlmoxarigado.Repository
         void Add(Categoria categoria);
 
         void Delete(Categoria Idcategoria);
+
+        Task<Categoria> GetById(int id);
     }
 }

@@ -62,18 +62,23 @@ namespace APIAlmoxarigado.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("/GetDepartamentoById/{id}")]
+        public async Task<Departamento> GetPorId(int id)
+        {
+            return await _departamentoRepository.GetById(id);
+        }
+
         [HttpDelete]
         [Route("{idDepartamento}/RemoveDepartamento")]
-        public IActionResult RemoveDepartamento(int idDepartamento)
+        public async Task<IActionResult> RemoveDepartamento(int idDepartamento)
         {
             try
             {
-                var departamentoEncontrodo = _departamentoRepository.GetAll().Find(x => x.id == idDepartamento);
+                var departamentoEncontrodo = await _departamentoRepository.GetById(idDepartamento);
                 if (departamentoEncontrodo is not null)
                 {
-                    _departamentoRepository.Delete(
-                        new Departamento() { id = idDepartamento }
-                        );
+                    _departamentoRepository.Delete(departamentoEncontrodo);
 
                     return Ok("Departamendo Removido com sucesso");
                 }

@@ -121,18 +121,23 @@ namespace APIAlmoxarigado.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("/GetProdutoById/{id}")]
+        public async Task<Produto> GetById(int id)
+        {
+            return await _produtoRepository.GetById(id);
+        }
+
         [HttpDelete]
         [Route("{idProduto}/RemoveProduto")]
-        public IActionResult RemoveProduto(int idProduto)
+        public async Task<IActionResult> RemoveProduto(int idProduto)
         {
             try
             {
-                var categoriaEncontrada = _produtoRepository.GetAll().Find(x => x.id == idProduto);
-                if (categoriaEncontrada is not null)
+                var produtoEncontrado = await _produtoRepository.GetById(idProduto);
+                if (produtoEncontrado is not null)
                 {
-                    _produtoRepository.Delete(
-                        new Produto() { id = idProduto }
-                        );
+                    _produtoRepository.Delete(produtoEncontrado);
 
                     return Ok("Produto Removido com sucesso");
                 }

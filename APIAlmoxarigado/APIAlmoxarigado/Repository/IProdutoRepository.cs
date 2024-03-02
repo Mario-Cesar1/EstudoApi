@@ -9,5 +9,6 @@ namespace APIAlmoxarigado.Repository
         void Delete(Produto idProduto);
 
         void Add(Produto produto);
+        Task<Produto> GetById(int id);
     }
 }

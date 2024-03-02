@@ -62,18 +62,23 @@ namespace APIAlmoxarigado.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("/GetCategoriaById/{id}")]
+        public async Task<Categoria> GetPorId(int id)
+        {
+            return await _categoriaRepository.GetById(id);
+        }
+
         [HttpDelete]
         [Route("{idCategoria}/RemoveCategoria")]
-        public IActionResult RemoveCategoria(int idCategoria)
+        public async Task<IActionResult> RemoveCategoria(int idCategoria)
         {
             try
             {
-                var categoriaEncontrada = _categoriaRepository.GetAll().Find(x => x.id == idCategoria);
+                var categoriaEncontrada = await _categoriaRepository.GetById(idCategoria);
                 if (categoriaEncontrada is not null)
                 {
-                    _categoriaRepository.Delete(
-                        new Categoria() { id = Convert.ToInt32(idCategoria)}
-                        );
+                    _categoriaRepository.Delete(categoriaEncontrada);
 
                     return Ok("Categoria Removida com sucesso");
                 }
