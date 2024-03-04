@@ -11,5 +11,7 @@ namespace APIAlmoxarigado.Repository
         void Delete(Departamento idDepartamento);
 
         Task<Departamento> GetById(int id);
+
+        void Update(Departamento departamento);
     }
 }

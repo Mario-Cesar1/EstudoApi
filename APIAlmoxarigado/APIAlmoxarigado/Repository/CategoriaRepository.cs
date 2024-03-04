@@ -25,6 +25,12 @@ namespace APIAlmoxarigado.Repository
         public async Task<Categoria?> GetById(int id)
         {
             return await bdConexao.Set<Categoria>().FindAsync(id);
-        } 
+        }
+
+        public void Update(Categoria categoria)
+        {
+            bdConexao.Categoria.Update(categoria);
+            bdConexao.SaveChanges();
+        }
     }
 }

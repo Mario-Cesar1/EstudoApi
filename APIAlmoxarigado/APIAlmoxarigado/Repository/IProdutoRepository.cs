@@ -10,5 +10,6 @@ namespace APIAlmoxarigado.Repository
 
         void Add(Produto produto);
         Task<Produto> GetById(int id);
+        void Update(Produto produto);
     }
 }

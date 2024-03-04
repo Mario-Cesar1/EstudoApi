@@ -91,5 +91,22 @@ namespace APIAlmoxarigado.Controllers
                 return BadRequest("Erro ao remover categoria: " + ex);
             }
         }
+
+        [HttpPut]
+        [Route("UpdateCategoria")]
+        public IActionResult UpdateCategoria(Categoria categoria)
+        {
+            try
+            {
+                _categoriaRepository.Update(categoria);
+
+                return Ok("Atualizado com Sucesso");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Não atualizado. Erro: " + ex.Message);
+            }
+        }
     }
 }

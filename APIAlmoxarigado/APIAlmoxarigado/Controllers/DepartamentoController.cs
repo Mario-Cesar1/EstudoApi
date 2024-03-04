@@ -91,6 +91,23 @@ namespace APIAlmoxarigado.Controllers
                 return BadRequest("Erro ao remover departamendo: " + ex);
             }
         }
+
+        [HttpPut]
+        [Route("UpdateDepartamento")]
+        public IActionResult UpdateCategoria(Departamento departamento)
+        {
+            try
+            {
+                _departamentoRepository.Update(departamento);
+
+                return Ok("Atualizado com Sucesso");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Não atualizado. Erro: " + ex.Message);
+            }
+        }
     }
 }
 

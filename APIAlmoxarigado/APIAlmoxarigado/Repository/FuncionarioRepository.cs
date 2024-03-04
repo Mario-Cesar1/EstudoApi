@@ -21,13 +21,18 @@ namespace APIAlmoxarigado.Repository
 
         public List<Funcionario> GetAll()
         {
-
-            return bdConexao.Funcionario.ToList();
+            return bdConexao.Set<Funcionario>().ToList();
         }
 
         public async Task<Funcionario?> GetById(int id)
         {
             return await bdConexao.Set<Funcionario>().FindAsync(id);
+        }
+
+        public void Update(Funcionario funcionario)
+        {
+            bdConexao.Funcionario.Update(funcionario);
+            bdConexao.SaveChanges();
         }
     }
 }

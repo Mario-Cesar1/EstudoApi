@@ -29,5 +29,11 @@ namespace APIAlmoxarigado.Repository
         {
             return await bdConexao.Set<Produto>().FindAsync(id);
         }
+
+        public void Update(Produto produto)
+        {
+            bdConexao.Produto.Update(produto);
+            bdConexao.SaveChanges();
+        }
     }
 }

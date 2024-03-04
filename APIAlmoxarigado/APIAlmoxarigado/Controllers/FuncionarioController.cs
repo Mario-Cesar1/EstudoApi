@@ -25,11 +25,21 @@ namespace APIAlmoxarigado.Controllers
 
         [HttpPost]
         [Route("AddFuncionario")]
-        public IActionResult AddCategoria(Funcionario funcionario)
+        public IActionResult AddFuncionario(FuncionarioViewModel funcionario)
         {
             try
             {
-                _funcionarioRepository.Add(funcionario);
+                _funcionarioRepository.Add(
+                    new Funcionario
+                    {
+                        cargo = funcionario.cargo,
+                        cidade = funcionario.cidade,
+                        DataNascimento = funcionario.DataNascimento,
+                        endereco = funcionario.endereco,
+                        nome = funcionario.nome,
+                        salario = funcionario.salario,
+                        UF = funcionario.UF
+                    });
                 
                 return Ok("Cadastrado com Sucesso");
             }
@@ -37,6 +47,53 @@ namespace APIAlmoxarigado.Controllers
             {
 
                 return BadRequest("Não Cadastrado. Erro: " + ex.Message);
+            }
+        }
+
+        [HttpGet]
+        [Route("/GetFuncionarioById/{id}")]
+        public async Task<Funcionario> GetPorId(int id)
+        {
+            return await _funcionarioRepository.GetById(id);
+        }
+
+        [HttpDelete]
+        [Route("{idCategoria}/RemoveFuncionario")]
+        public async Task<IActionResult> RemoveCategoria(int idCategoria)
+        {
+            try
+            {
+                var categoriaEncontrada = await _funcionarioRepository.GetById(idCategoria);
+                if (categoriaEncontrada is not null)
+                {
+                    _funcionarioRepository.Delete(categoriaEncontrada);
+
+                    return Ok("Funcionário Removida com sucesso");
+                }
+                return BadRequest("Funcionário não existe");
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Erro ao remover Funcionário: " + ex);
+            }
+        }
+
+        [HttpPut]
+        [Route("Updatefuncionario")]
+        public IActionResult UpdateCategoria(Funcionario funcionario)
+        {
+            try
+            {
+                _funcionarioRepository.Update(funcionario);
+
+                return Ok("Atualizado com Sucesso");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Não atualizado. Erro: " + ex.Message);
             }
         }
     }

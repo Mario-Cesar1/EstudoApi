@@ -150,6 +150,58 @@ namespace APIAlmoxarigado.Controllers
                 return BadRequest("Erro ao remover produto: " + ex);
             }
         }
+
+        [HttpPut]
+        [Route("UpdateProdutoSemFoto")]
+        public IActionResult UpdateProdutoSemFoto(ProdutoViewModelSemFotoUpdate produto)
+        {
+            try
+            {
+                _produtoRepository.Update(
+                    new Produto
+                    {
+                        id = produto.id,
+                        nome = produto.nome,
+                        estoque = produto.estoque,
+                        codigoCategoria = produto.codigoCategoria
+                    });
+
+                return Ok("Produto Atualizado com Sucesso");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Não atualizado. Erro: " + ex.Message);
+            }
+        }
+
+        [HttpPut]
+        [Route("UpdateProdutoComFoto")]
+        public IActionResult UpdateProdutoComFoto(ProdutoViewModelComFotoUpdate produto)
+        {
+            try
+            {
+                var caminho = Path.Combine("Storage", produto.photo.FileName);
+                using Stream fileStream = new FileStream(caminho, FileMode.Create);
+                produto.photo.CopyTo(fileStream);
+                _produtoRepository.Update(
+                    new Produto
+                    {
+                        id = produto.id,
+                        nome = produto.nome,
+                        estoque = produto.estoque,
+                        codigoCategoria = produto.codigoCategoria,
+                        photourl = caminho
+                    });
+
+                return Ok("Produto Atualizado com Sucesso");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest("Não atualizado. Erro: " + ex.Message);
+            }
+        }
     }
 }
 

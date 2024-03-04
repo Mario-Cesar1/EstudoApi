@@ -11,5 +11,6 @@ namespace APIAlmoxarigado.Repository
         void Delete(Funcionario idFuncionario);
 
         Task<Funcionario> GetById(int id);
+        void Update(Funcionario funcionario);
     }
 }
