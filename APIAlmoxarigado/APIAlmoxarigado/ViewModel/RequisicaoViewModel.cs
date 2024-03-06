@@ -2,7 +2,8 @@
 {
     public class RequisicaoViewModel
     {
-        public string REQDATA { get; set; }
-        public string? REQOBSERVACAO { get; set; }
+        public DateTime DataRequisicao { get; set; }
+
+        public List<itensRequisicaoViewModel> itens { get; set; }
     }
 }

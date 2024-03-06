@@ -1,5 +1,6 @@
 ﻿using APIAlmoxarigado.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace APIAlmoxarigado.Infraestrutura
 {
@@ -16,6 +17,22 @@ namespace APIAlmoxarigado.Infraestrutura
 
               );
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Requisicao>()
+                .HasMany(e => e.itens)
+                .WithOne(e => e.Requisicao)
+                .HasForeignKey(e => e.CodigoRequisicao)
+                .HasPrincipalKey(e => e.Codigo);
+
+
+            modelBuilder.Entity<Produto>()
+              .HasMany(e => e.itens)
+              .WithOne(e => e.Produto)
+              .HasForeignKey(e => e.CodigoProduto)
+              .HasPrincipalKey(e => e.id);
+        }
+
         public DbSet<Produto> Produto { get; set; }
         public DbSet<Categoria> Categoria { get; set; }
         public DbSet<Departamento> Departamento { get; set; }
@@ -23,5 +40,6 @@ namespace APIAlmoxarigado.Infraestrutura
         public DbSet<MotivoSaida> MotivoSaida { get; set; }
         public DbSet<CategoriaMotivo> CategoriaMotivo { get; set; }
         public DbSet<Requisicao> Requisicao { get; set; }
+        public DbSet<itensRequisicao> ItensRequisicao { get; set; }
     }
 }

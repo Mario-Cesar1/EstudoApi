@@ -50,11 +50,23 @@ create table MotivoSaida
 	Constraint FK_CAMID foreign key (CAMID) references CategoriaMotivo(CAMID)
 )
 go
-create table Requisicao
+Create table Requisicao
 (
-	REQID int identity(1,1) primary key,
-	REQDATA varchar(10) not null,
-	REQOBSERVACAO varchar(250) null
+  Codigo  int identity(1,1) primary key,
+  DataRequisicao datetime null
+)
+go
+Create table itensRequisicao
+(
+   IteID int primary key identity(1,1),
+   CodigoRequisicao int not null,
+   CodigoProduto int not null,
+   Preco float not null default(0),
+   Quantidade int not null default(0),
+   CONSTRAINT FK_itenRequisicao FOREIGN KEY (CodigoRequisicao)
+    REFERENCES Requisicao(Codigo),
+	CONSTRAINT FK_ItenProdutoReq FOREIGN KEY (CodigoProduto)
+    REFERENCES Produto(id)
 )
 go
 alter table Produto add codigoCategoria int FOREIGN KEY REFERENCES Categoria(id)  
@@ -82,10 +94,9 @@ go
 insert MotivoSaida(MOTDESCRICAO, CAMID) values ('Solicitar Revisão', 1)
 insert MotivoSaida(MOTDESCRICAO, CAMID) values ('Dúvida sobre a requisição', 2)
 insert MotivoSaida(MOTDESCRICAO, CAMID) values ('Falha técnica', 3)
-go
-insert Requisicao(REQDATA, REQOBSERVACAO) values ('04/03/2024', null)
-insert Requisicao(REQDATA, REQOBSERVACAO) values ('25/11/2022', 'Falha encontrada no computador do setor 2')
-insert Requisicao(REQDATA, REQOBSERVACAO) values ('15/09/2023', 'Computadores novos requisitados para setor 4')
+
+
+--selects
 select * from Funcionario
 Select * from Produto
 Select * from Categoria
@@ -93,3 +104,4 @@ select * from Departamento
 select * from CategoriaMotivo
 select * from MotivoSaida
 select * from Requisicao
+select * from ItensRequisicao

@@ -12,5 +12,7 @@ namespace APIAlmoxarigado.Models
         public int estoque { get; set; }
         public string? photourl { get; set; }
         public int? codigoCategoria { get; set; }
+
+        public List<itensRequisicao> itens { get; set; }
     }
 }

@@ -5,8 +5,10 @@ namespace APIAlmoxarigado.Models
     public class Requisicao
     {
         [Key]
-        public int REQID { get; set; }
-        public string REQDATA { get; set; }
-        public string? REQOBSERVACAO { get; set; }
+        public int Codigo { get; set; }
+
+        public DateTime DataRequisicao { get; set; }
+
+        public List<itensRequisicao> itens { get; set; }
     }
 }
