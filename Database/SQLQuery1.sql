@@ -24,16 +24,25 @@ create table Departamento
 	situacao bit null
 )
 go
+create table Cargo
+(
+	id int identity(1,1) primary key,
+	Descricao varchar(100) not null,
+	Localizacao varchar(100) null
+)
+go
 create table Funcionario
 (
 	id int identity(1,1) primary key,
 	nome varchar(100) not null,
-	cargo varchar(100) not null,
+	cargo int not null,
 	DataNascimento varchar(10) not null,
 	salario float not null,
 	endereco varchar(200),
 	cidade varchar(100),
-	UF varchar(2)
+	UF varchar(2),
+
+	constraint FK_cargoCodigo foreign key (cargo) references Cargo(id)
 )
 go
 create table CategoriaMotivo
@@ -69,6 +78,16 @@ Create table itensRequisicao
     REFERENCES Produto(id)
 )
 go
+create table FuncionarioProduto
+(
+	codFuncionario int not null,
+	codProduto int not null,
+	Primary key(codFuncionario, codProduto),
+
+	Constraint FK_codFuncionario foreign key (codFuncionario) references Funcionario(id),
+	Constraint FK_codProduto foreign key (codProduto) references Produto(id)
+)
+go
 alter table Produto add codigoCategoria int FOREIGN KEY REFERENCES Categoria(id)  
 go
 Insert Categoria (descricao) values ('Comida')
@@ -83,18 +102,21 @@ Insert Departamento (descricao, situacao) values ('Financeiro', 1)
 Insert Departamento (descricao, situacao) values ('Administrativo', 1)
 Insert Departamento (descricao, situacao) values ('Segurança', 0)
 go
-Insert Funcionario(nome, cargo, DataNascimento, salario, endereco, cidade, UF) values ('Pedro', 'Garoto de Programa', '01/02/2000', 2000.96, 'Rua da gota serena, 200', 'Cidade da gota', 'GT')
-Insert Funcionario(nome, cargo, DataNascimento, salario, endereco, cidade, UF) values ('Cleiton', 'Administrador Financeiro', '05/10/2000', 2000.96, 'Rua da gota serena, 210', 'Cidade da gota', 'GT')
-Insert Funcionario(nome, cargo, DataNascimento, salario, endereco, cidade, UF) values ('Mário', 'Gerente', '09/11/2000', 2000.96, 'Rua da gota serena, 220', 'Cidade da gota', 'GT')
+Insert Funcionario(nome, cargo, DataNascimento, salario, endereco, cidade, UF) values ('Pedro', 1, '01/02/2000', 2000.96, 'Rua da gota serena, 200', 'Cidade da gota', 'GT')
+Insert Funcionario(nome, cargo, DataNascimento, salario, endereco, cidade, UF) values ('Cleiton', 2, '05/10/2000', 2000.96, 'Rua da gota serena, 210', 'Cidade da gota', 'GT')
+Insert Funcionario(nome, cargo, DataNascimento, salario, endereco, cidade, UF) values ('Mário', 3, '09/11/2000', 2000.96, 'Rua da gota serena, 220', 'Cidade da gota', 'GT')
 go
-insert CategoriaMotivo(CAMDESCRICAO) values ('Administração')
-insert CategoriaMotivo(CAMDESCRICAO) values ('Dúvida')
+insert CategoriaMotivo(CAMDESCRICAO) values ('Uso Diário')
+insert CategoriaMotivo(CAMDESCRICAO) values ('Substituição')
 insert CategoriaMotivo(CAMDESCRICAO) values ('TI')
 go
 insert MotivoSaida(MOTDESCRICAO, CAMID) values ('Solicitar Revisão', 1)
 insert MotivoSaida(MOTDESCRICAO, CAMID) values ('Dúvida sobre a requisição', 2)
 insert MotivoSaida(MOTDESCRICAO, CAMID) values ('Falha técnica', 3)
-
+go
+insert cargo (Descricao, Localizacao) values ('Garoto de Programa', 'Laboratório 1')
+insert cargo (Descricao, Localizacao) values ('Administrador financeiro', 'Prédio 10')
+insert cargo (Descricao, Localizacao) values ('Gerente', 'Prédio 11')
 
 --selects
 select * from Funcionario

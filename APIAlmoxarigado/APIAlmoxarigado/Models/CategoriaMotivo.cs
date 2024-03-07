@@ -7,5 +7,7 @@ namespace APIAlmoxarigado.Models
         [Key]
         public int CAMID { get; set; }
         public string CAMDESCRICAO { get; set; }
+
+        public List<MotivoSaida> Motivos { get; set; }
     }
 }

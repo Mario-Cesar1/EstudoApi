@@ -50,4 +50,5 @@ namespace APIAlmoxarigado.Controllers
                 return Ok("Não cadastro" + ex.Message);
             }
         }
+    }
 }

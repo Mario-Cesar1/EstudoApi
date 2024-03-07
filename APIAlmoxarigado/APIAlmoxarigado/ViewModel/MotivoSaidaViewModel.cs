@@ -1,4 +1,7 @@
-﻿namespace APIAlmoxarigado.ViewModel
+﻿using APIAlmoxarigado.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace APIAlmoxarigado.ViewModel
 {
     public class MotivoSaidaViewModel
     {

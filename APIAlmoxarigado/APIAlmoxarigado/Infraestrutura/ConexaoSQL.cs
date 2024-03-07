@@ -31,6 +31,12 @@ namespace APIAlmoxarigado.Infraestrutura
               .WithOne(e => e.Produto)
               .HasForeignKey(e => e.CodigoProduto)
               .HasPrincipalKey(e => e.id);
+
+            modelBuilder.Entity<CategoriaMotivo>()
+              .HasMany(e => e.Motivos)
+              .WithOne(e => e.CategoriaMotivo)
+              .HasForeignKey(e => e.CAMID)
+              .HasPrincipalKey(e => e.CAMID);
         }
 
         public DbSet<Produto> Produto { get; set; }
