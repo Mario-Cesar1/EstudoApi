@@ -9,5 +9,6 @@
         public string endereco { get; set; }
         public string cidade { get; set; }
         public string UF { get; set; }
+        public int idEscolaridade { get; set; }
     }
 }

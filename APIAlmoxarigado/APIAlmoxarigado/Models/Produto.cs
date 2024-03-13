@@ -14,5 +14,6 @@ namespace APIAlmoxarigado.Models
         public int? codigoCategoria { get; set; }
 
         public List<itensRequisicao> itens { get; set; }
+        public List<itensEntrada> itensEntrada { get; set; }
     }
 }

@@ -37,6 +37,19 @@ namespace APIAlmoxarigado.Infraestrutura
               .WithOne(e => e.CategoriaMotivo)
               .HasForeignKey(e => e.CAMID)
               .HasPrincipalKey(e => e.CAMID);
+
+
+            modelBuilder.Entity<Entrada>()
+              .HasMany(e => e.itensEntrada)
+              .WithOne(e => e.Entrada)
+              .HasForeignKey(e => e.codigoEntrada)
+              .HasPrincipalKey(e => e.id);
+
+            modelBuilder.Entity<Produto>()
+              .HasMany(e => e.itensEntrada)
+              .WithOne(e => e.Produto)
+              .HasForeignKey(e => e.codigoProdutoEntrada)
+              .HasPrincipalKey(e => e.id);
         }
 
         public DbSet<Produto> Produto { get; set; }
@@ -47,5 +60,8 @@ namespace APIAlmoxarigado.Infraestrutura
         public DbSet<CategoriaMotivo> CategoriaMotivo { get; set; }
         public DbSet<Requisicao> Requisicao { get; set; }
         public DbSet<itensRequisicao> ItensRequisicao { get; set; }
+        public DbSet<itensEntrada> ItensEntrada { get; set; }
+        public DbSet<Entrada> Entrada { get; set; }
+        public DbSet<Escolaridade> Escolaridade { get; set; }
     }
 }

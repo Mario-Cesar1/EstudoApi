@@ -88,6 +88,31 @@ create table FuncionarioProduto
 	Constraint FK_codProduto foreign key (codProduto) references Produto(id)
 )
 go
+create table Escolaridade
+(
+	id int identity(1,1) primary key,
+	descricao varchar(100) not null,
+)
+alter table Funcionario add idEscolaridade int
+alter table funcionario add Constraint FK_idEscolaridade foreign key (idEscolaridade) references Escolaridade(id)
+go
+create table Entrada
+(
+	id int identity(1,1) primary key,
+	dataEntrada datetime not null
+)
+go
+create table itensEntrada
+(
+	id int identity(1,1) primary key,
+	codigoEntrada int not null,
+	codigoProdutoEntrada int not null,
+	quantidadeEntrada int not null,
+
+	Constraint FK_CodifoProdutoEntrada foreign key (codigoProdutoEntrada) references produto(id),
+	  Constraint FK_CodigoEntrada foreign key (codigoEntrada) references Entrada(id)
+)
+go
 alter table Produto add codigoCategoria int FOREIGN KEY REFERENCES Categoria(id)  
 go
 Insert Categoria (descricao) values ('Comida')
@@ -117,7 +142,13 @@ go
 insert cargo (Descricao, Localizacao) values ('Garoto de Programa', 'Laboratório 1')
 insert cargo (Descricao, Localizacao) values ('Administrador financeiro', 'Prédio 10')
 insert cargo (Descricao, Localizacao) values ('Gerente', 'Prédio 11')
-
+go
+insert Escolaridade (descricao) values ('Ensino Superior')
+insert Escolaridade (descricao) values ('Ensino Médio')
+insert Escolaridade (descricao) values ('Mestrado')
+insert Escolaridade (descricao) values ('Doutorado')
+insert Escolaridade (descricao) values ('Graduado')
+insert Escolaridade (descricao) values ('Pós-Graduado')
 --selects
 select * from Funcionario
 Select * from Produto
@@ -127,3 +158,6 @@ select * from CategoriaMotivo
 select * from MotivoSaida
 select * from Requisicao
 select * from ItensRequisicao
+select * from Entrada
+select * from itensEntrada
+select * from Escolaridade

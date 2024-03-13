@@ -38,7 +38,8 @@ namespace APIAlmoxarigado.Controllers
                         endereco = funcionario.endereco,
                         nome = funcionario.nome,
                         salario = funcionario.salario,
-                        UF = funcionario.UF
+                        UF = funcionario.UF,
+                        idEscolaridade = funcionario.idEscolaridade
                     });
                 
                 return Ok("Cadastrado com Sucesso");
