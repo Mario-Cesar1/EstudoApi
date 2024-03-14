@@ -1,4 +1,5 @@
-﻿using APIAlmoxarigado.Models;
+﻿using APIAlmoxarigado.Infraestrutura;
+using APIAlmoxarigado.Models;
 using APIAlmoxarigado.Repository;
 using APIAlmoxarigado.ViewModel;
 using Microsoft.AspNetCore.Mvc;
@@ -9,11 +10,13 @@ namespace APIAlmoxarigado.Controllers
     [Route("api/v1/entrada")]
     public class EntradaController : Controller
     {
-        private readonly IProdutoRepository _produtoRepository;
+        ProdutoRepository _produto = new ProdutoRepository();
+
+        public IProdutoRepository _produtorepository;
 
         public EntradaController(IProdutoRepository repositorio)
         {
-            _produtoRepository = repositorio;
+            _produtorepository = repositorio;
         }
 
         EntradaRepository _repository = new EntradaRepository();
@@ -35,24 +38,11 @@ namespace APIAlmoxarigado.Controllers
                               quantidadeEntrada = item.quantidadeEntrada
                           }
                    );
-
-                    int i = 0;
-                    _repository.Add(lista);
-                    var a = carrinho.itensEntrada;
-                    var b = item.quantidadeEntrada;
+                    ProdutoController produto = new ProdutoController(_produto);
+                    var ProdutoEntradaEncontrado = await _produtorepository.GetById(item.codigoProdutoEntrada);
+                    ProdutoEntradaEncontrado.estoque = ProdutoEntradaEncontrado.estoque + item.quantidadeEntrada;
+                    produto.UpdateProdutoEntrada(ProdutoEntradaEncontrado);
                 }
-
-
-                ViewBag.produtoEncontrado = await _produtoRepository.GetById(item.codigoProdutoEntrada);
-
-                _produtoRepository.Update(new Produto()
-                {
-                    id = ViewBag.produtoEncontrado.id,
-                    nome = ViewBag.produtoEncontrado.nome,
-                    estoque = ViewBag.produtoEncontrado.estoque + item.quantidadeEntrada,
-                    photourl = ViewBag.produtoEncontrado.photourl,
-                    codigoCategoria = ViewBag.produtoEncontrado.codigoCategoria,
-                });
 
                 Entrada entradaNova = new Entrada()
                 {

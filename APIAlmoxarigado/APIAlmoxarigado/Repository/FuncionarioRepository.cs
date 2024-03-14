@@ -21,7 +21,7 @@ namespace APIAlmoxarigado.Repository
 
         public List<Funcionario> GetAll()
         {
-            return bdConexao.Set<Funcionario>().ToList();
+            return bdConexao.Funcionario.ToList();
         }
 
         public async Task<Funcionario?> GetById(int id)

@@ -45,7 +45,7 @@ namespace APIAlmoxarigado.Controllers
 
         [HttpPost]
         [Route("AddCategoria")]
-        public IActionResult AddCategoria([FromForm] CategoriaViewModel categoria)
+        public IActionResult AddCategoria( CategoriaViewModel categoria)
         {
             try
             {

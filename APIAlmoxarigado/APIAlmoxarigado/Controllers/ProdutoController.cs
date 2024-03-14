@@ -202,6 +202,20 @@ namespace APIAlmoxarigado.Controllers
                 return BadRequest("Não atualizado. Erro: " + ex.Message);
             }
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateProdutoEntrada(Produto produto)
+        {
+            try
+            {
+                _produtoRepository.Update(produto);
+                return Ok("Atualizado");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest("Erro: " + ex);
+            }
+        }
     }
 }
 
